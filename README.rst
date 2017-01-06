@@ -61,7 +61,7 @@ For support, please contact the STScI help desk at help<at>stsci<dot>edu.
     :scale: 100%
     :target: https://travis-ci.org/spacetelescope/stistarg
 
-.. |docs| image:: https://readthedocs.org/projects/stistarg/badge/?version=latest
+.. |docs| image:: https://readthedocs.org/projects/stistarg/badge/
     :alt: Documentation Status
     :scale: 100%
     :target: http://stistarg.readthedocs.io/en/latest/?badge=latest

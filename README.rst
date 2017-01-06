@@ -1,7 +1,7 @@
 HST/STIS Target Acquisition Simulator
 =====================================
 
-See documentation (to be posted) at http://pythonhosted.org/stistarg/
+See documentation (to be posted) at http://stistarg.readthedocs.io/en/latest/
 
 Utility to simulate HST/STIS target acquisitions with various "optional parameters" 
 available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.

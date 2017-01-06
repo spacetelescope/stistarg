@@ -6,8 +6,8 @@ See documentation (to be posted) at http://pythonhosted.org/stistarg/
 Utility to simulate HST/STIS target acquisitions with various "optional parameters" 
 available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 
-.. image:: https://travis-ci.org/spacetelescope/stistarg.svg?branch=master
-    :target: https://travis-ci.org/spacetelescope/stistarg
+|build-status| |docs|
+
 
 Command Line Interface
 ----------------------
@@ -55,3 +55,13 @@ Contact
 
 For support, please contact the STScI help desk at help<at>stsci<dot>edu.
 
+
+.. |build-status| image:: https://travis-ci.org/spacetelescope/stistarg.svg?branch=master
+    :alt: build status
+    :scale: 100%
+    :target: https://travis-ci.org/spacetelescope/stistarg
+
+.. |docs| image:: https://readthedocs.org/projects/stistarg/badge/?version=latest
+    :alt: Documentation Status
+    :scale: 100%
+    :target: http://stistarg.readthedocs.io/en/latest/?badge=latest

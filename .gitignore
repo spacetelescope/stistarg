@@ -1,0 +1,7 @@
+build/
+doc/_build/
+*.pyc
+*%
+*~
+.DS_Store
+targacq.a

@@ -1,0 +1,7 @@
+name: stistarg
+channels:
+  - http://ssb.stsci.edu/astroconda
+dependencies:
+  - numpy>=1.10.0
+  - stsci.distutils
+  - stsci.tools

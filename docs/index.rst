@@ -16,7 +16,6 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
 
 Installation

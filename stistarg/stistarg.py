@@ -28,27 +28,28 @@ else:
 
 
 def findcheckbox(inarray, checkboxsize):
+    '''Finds the brightest checkbox within the input image sub-array, 
+    and returns its location and flux.
+
+    :Args:
+       * inarray (np.ndarray):  input array
+       * checkboxsize (int):    size of the (square) checkbox
+
+    :Returns:
+       * maxFluxRow (float):    x location of brightest checkbox
+       * maxFluxCol (float):    y location of brightest checkbox
+       * maxFlux (int):         maximum flux value
     '''
-    INPUTS:
-        inarray            pointer to the input array
-        checkboxsize       size of the (square) checkbox
     
-    RETURNS:
-        maxFluxRow         x location of brightest checkbox
-        maxFluxCol         y location of brightest checkbox
-        maxFlux column     the max flux's value
-        
-    DESCRIPTION: This function finds the brightest checkboxes within the 
-        input image sub-array, and returns their locations and fluxes.  
-        A checkbox of specified size is scanned over the
-        collected image, moving 1 pixel at a time over cols then
-        rows of the collected image, always staying wholly within the
-        collected image. At each position of the checkbox, the
-        sum of flux counts in the checkbox is accumulated.  This sum is 
-        compared against the running maximum, and the global max and 
-        the upper-left corner indices of the checkbox relative to the 
-        collected image are updated when a new max is found.
-    '''
+    # A checkbox of specified size is scanned over the
+    # input array, moving 1 pixel at a time over cols then
+    # rows of the collected image, always staying wholly within the
+    # collected image.  At each location, the sum of flux counts 
+    # in the checkbox is accumulated.  This sum is compared against 
+    # the running maximum, and the global max and the lower-left 
+    # corner indices of the checkbox relative to the input 
+    # image are updated when a new max is found.
+    
     shape = np.shape(inarray)
     nRows = shape[0]    # row indices for input array
     nCols = shape[1]    # col indices for input array
@@ -78,31 +79,28 @@ def findcheckbox(inarray, checkboxsize):
 
 
 def calculate_flux_centroid(inarray, x, y, checkboxsize, centroidmode='flux'):
-    '''
-    calculate_flux_centroid
-    
-    INPUTS:
-        inarray               pointer to the input array
-        maxfluxrow            x location of brightest checkbox
-        maxfluxcol            y location of brightest checkbox
-        checkboxsize          size of the (square) checkbox
-        centroid mode         flux or geometric centroid method
-        
-    RETURNS:
-        rowcentroid           x location of centroid using flux centroid method
-        colcentroid           y location of centroid using flux centroid method
-        georowcentroid        x location of centroid using Geometric centroid method
-        geocolocentroid       y location of centroid using Geometric centroid method
-        
-        
-    DESCRIPTION: This function calculates a flux-weighted centroid
-        within a given checkbox within a collected image. 
-        
-        Before computing the flux-weighted centroid, this function
-        checks the total flux within the checkbox. If it does not exceed 
-        a scaled box-flux threshold, there is not enough flux in the 
-        checkbox to perform a meaningful flux-weighted centroid, and the 
-        geometric center of the checkbox is computed instead.
+    '''Calculates a flux-weighted or geometric centroid within 
+    a given checkbox of the supplied array.
+
+    :Args:
+       * inarray (np.ndarray):  input array
+       * maxfluxrow (int):      x location of brightest checkbox
+       * maxfluxcol (int):      y location of brightest checkbox
+       * checkboxsize (int):    size of the (square) checkbox
+
+    :Kwargs:
+       * centroidmode (str):    "flux" or "geometric" centroid algorithm
+
+    :Returns:
+       * rowcentroid (float):   x location of centroid using specified centroid algorithm
+       * colcentroid (float):   y location of centroid using specified centroid algorithm
+
+    :Warning -- Not Implemented:
+       Before computing the flux-weighted centroid, this function
+       checks the total flux within the checkbox. If it does not exceed 
+       a scaled box-flux threshold, there is not enough flux in the 
+       checkbox to perform a meaningful flux-weighted centroid, and the 
+       geometric center of the checkbox is computed instead.
     '''
     subarr = inarray[x:x+checkboxsize, y:y+checkboxsize]
     
@@ -144,8 +142,21 @@ def validate_inputs(filename, ext, checkboxsize, source):
 
 def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, geo_y=None, 
     filename=None, ext=None):
-    '''
-    Display input array marked with brightest checkbox and flux/geometric positions.
+    '''Displays the input array annotated with the brightest checkbox 
+    and flux/geometric positions.
+    
+    :Args:
+       * arr (np.ndarray):  input array
+       * flux_x (float):    x location using flux-centroid algorithm
+       * flux_y (float):    y location using flux-centroid algorithm
+       * chkx (int):        x location of the checkbox
+       * chky (int):        y location of the checkbox
+
+    :Kwargs:
+       * geo_x (float):     x location using flux-centroid algorithm
+       * geo_y (float):     y location using flux-centroid algorithm
+       * filename (str):    filename to be used in image title
+       * ext (int):         extension number to be used in image title
     '''
     from matplotlib import pyplot as plt
     plt.ion()
@@ -189,9 +200,25 @@ def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, g
 
 
 def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
-    '''
-    HST/STIS Target Acquisition Simulator
-    
+    '''HST/STIS Target Acquisition Simulator
+
+    :Args:
+       * filename (str):       FITS file to simulate
+
+    :Kwargs:
+       * ext (int):            FITS extension of *filename* to use
+       * source (str):         "point" or "diffuse"
+       * checkboxsize (int):   size of square checkbox [pixels] to use for diffuse source geometric algorithm
+       * display (bool):       displays results and pauses execution
+
+    :Returns:
+       * rowcentroid (float):  
+       * colcentroid (float):  
+       * maxFlux (float):      
+
+    :Note:
+       stistarg currently supports only the STIS detector format and scale. 
+       The capability to use non-STIS data will be added in a future release.
     '''
     from datetime import datetime
     
@@ -265,8 +292,7 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
 
 
 def parse():
-    '''
-    Command line script interface to parse user inputs and call stistarg().
+    '''Command line script interface to parse user inputs and call stistarg().
     '''
     import argparse
     
@@ -275,7 +301,7 @@ def parse():
         epilog='Version {:s}; Written by {:s}'.format(__version__, __author__))
     
     # .fits file that will be analyzed
-    parser.add_argument('filename', metavar='FILENAME', help='Input file', type=str)
+    parser.add_argument('filename', metavar='FILENAME', help='Input FITS file', type=str)
     
     # Data are in extension:
     parser.add_argument('--ext', help='Input FITS extension [default=0]', dest='ext', type=int, default=0)

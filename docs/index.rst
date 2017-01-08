@@ -68,8 +68,8 @@ Python API
 .. autofunction:: stistarg.stistarg
 
 
-Optional Functions
-------------------
+Auxiliary Functions
+-------------------
 
 .. autofunction:: stistarg.findcheckbox
 .. autofunction:: stistarg.calculate_flux_centroid

@@ -16,6 +16,7 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import alabaster
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../stistarg'))
@@ -29,7 +30,8 @@ sys.path.insert(0, os.path.abspath('../stistarg'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc']
+html_theme_path = [alabaster.get_path()]
+extensions = ['alabaster', 'sphinx.ext.autodoc']
 #'sphinx.ext.imgmath'
 
 # Add any paths that contain templates here, relative to this directory.
@@ -88,13 +90,24 @@ html_theme = 'alabaster'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-#html_theme_options = {
-#    'logo': 'crosshairs.png', 
-#    'logo_name' : True, 
-#    'github_user' : 'spacetelescope',
-#    'github_repo' : 'stistarg',
-#    'github_button' : True, 
-#    'travis_button' : True, }
+html_theme_options = {
+    'logo'            : 'crosshairs.png', 
+    'logo_name'       : True, 
+    'description'     : 'Simulate target acquisitions', 
+    'github_user'     : 'spacetelescope',
+    'github_repo'     : 'stistarg',
+    'github_button'   : True, 
+    'travis_button'   : True, 
+    'analytics_id'    : 'UA-67123509-3',
+    'page_width'      : 1040,}
+
+html_sidebars = {
+    '**': [
+        'about.html',
+        'localtoc.html', 
+        'searchbox.html',
+    ]
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

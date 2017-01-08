@@ -85,11 +85,3 @@ Support
 -------
 
 For support, please contact the STScI help desk at help<at>stsci<dot>edu.
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`

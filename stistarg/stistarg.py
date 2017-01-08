@@ -212,9 +212,9 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
        * display (bool):       displays results and pauses execution
 
     :Returns:
-       * rowcentroid (float):  
-       * colcentroid (float):  
-       * maxFlux (float):      
+       * rowcentroid (float):  x location of centroid using specified flux-centroid algorithm
+       * colcentroid (float):  y location of centroid using specified flux-centroid algorithm
+       * maxFlux (int):        total flux within the brightest checkbox
 
     :Note:
        stistarg currently supports only the STIS detector format and scale. 
@@ -241,7 +241,7 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
         if source == 'point':
              # use function calculate_flux_centroid for Point source
              # returns flux weighted centroid
-            rowcentroid, colcentroid= calculate_flux_centroid(inarray, x, y, checkboxsize, 'flux')
+            rowcentroid, colcentroid = calculate_flux_centroid(inarray, x, y, checkboxsize, 'flux')
             georowcentroid, geocolcentroid = None, None
         elif source == 'diffuse':
             # use function calculate_flux_centroid for Diffuse source

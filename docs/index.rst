@@ -30,6 +30,8 @@ launch the AstroConda environment::
 
 Then, install the `stistarg` script::
 
+  git clone https://github.com/spacetelescope/stistarg.git
+  cd stistarg
   python setup.py install
 
 (`stistarg` will be added to conda soon.)

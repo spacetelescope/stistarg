@@ -43,7 +43,7 @@ For more information, type ``stistarg --help``::
   Simulate HST/STIS onboard target acquisition algorithm on user data.
   
   positional argument:
-    FILENAME              Input file
+    FILENAME              Input FITS file
   
   optional arguments:
     -h, --help            show this help message and exit
@@ -75,7 +75,15 @@ Limitations
 -----------
 
 This alpha release currently supports only the STIS detector format and scale.  The 
-capability to use non-STIS data will be added in a future release.
+capability to use non--STIS data will be added in a future release.  Users wishing to 
+use data from other sources must trim and rescale their input data accordingly.  The 
+STIS CCD plate scale is `0.05078 arcsec/pix`_.
+
+.. _`0.05078 arcsec/pix`: http://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
+
+Furthermore, `stistarg` assumes the use of STIS acquisition image data and trims out the 
+last five columns from the input array before performing calculations (these are normally 
+hot).  To skip this behavior, users should pad their data accordingly.
 
 
 Support

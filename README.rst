@@ -6,7 +6,7 @@ See documentation at http://stistarg.readthedocs.io/en/latest/
 Utility to simulate HST/STIS target acquisitions with various "optional parameters" 
 available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 
-|build-status| |docs|
+|build-status| |docs| |conda|
 
 
 Command Line Interface
@@ -64,3 +64,7 @@ For support, please contact the STScI help desk at help<at>stsci<dot>edu.
     :alt: Documentation Status
     :scale: 100%
     :target: http://stistarg.readthedocs.io/en/latest/?badge=latest
+
+.. |conda| image:: https://anaconda.org/sean-lockwood/stistarg/badges/installer/conda.svg
+    :alt: conda install
+    :target: https://conda.anaconda.org/sean-lockwood

@@ -1,8 +1,3 @@
-.. stistarg documentation master file, created by
-   sphinx-quickstart on Fri Jan  6 17:04:09 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 HST/STIS Target Acquisition Simulator
 =====================================
 
@@ -59,7 +54,7 @@ For more information, type ``stistarg --help``::
                           [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.1a1; Written by Berry & Lockwood
+  Version 2.1a2; Written by Berry & Lockwood
 
 
 Python API

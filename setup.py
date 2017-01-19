@@ -10,7 +10,7 @@ with open(os.path.join(here, 'README.rst')) as f:
 setup(
     name = 'stistarg',
     url = 'http://www.stsci.edu/instruments/stis/',
-    version = '2.1a1',
+    version = '2.1a2',
     description = 'HST/STIS Target Acquisition Simulator',
     long_description = long_description,
     author = 'Sean Lockwood, Bralen Berry',

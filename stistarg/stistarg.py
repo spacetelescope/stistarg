@@ -13,7 +13,7 @@ import numpy as np
 from astropy.io import fits
 
 __author__  = 'Berry & Lockwood'
-__version__ = '2.1a1'
+__version__ = '2.1a2'
 __all__ = ['stistarg', 'findcheckbox', 'calculate_flux_centroid', 'display_results']
 
 # For compatibility between Python 2/3:
@@ -176,8 +176,8 @@ def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, g
         vmin=vmin, vmax=vmax)
     if filename is not None:
         ax.set_title('{:s}[{:.0f}]'.format(filename, ext))
-    ax.set_xlabel('X [pix]')
-    ax.set_ylabel('Y [pix]')
+    ax.set_xlabel('axis1 [pix]')
+    ax.set_ylabel('axis2 [pix]')
     cb = fig.colorbar(img)
     cb.set_label('Flux')
     # Plot grey X at flux centroid coordinate:
@@ -192,8 +192,8 @@ def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, g
         'w')
     
     # Explicitly set plotting boundaries:
-    ax.set_xlim(0, np.shape(arr)[0]-1)
-    ax.set_ylim(0, np.shape(arr)[1]-1)
+    ax.set_xlim(0, np.shape(arr)[1])
+    ax.set_ylim(0, np.shape(arr)[0])
     
     fig.show()
     tmp = WAIT('Press ENTER to exit... ')
@@ -230,6 +230,7 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
     with fits.open(filename) as f:
         # Set data extension:
         inarray = f[ext].data.transpose()
+        inarray = inarray[:-4,:]  # Only do this for input STIS target acq data!
         
         # Error check on extension:
         if inarray is None:
@@ -275,10 +276,10 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
             flux_plotnote = ''
             geo_plotnote  = ''
         
-        print('Flux center:              x = {:.1f} ; y = {:.1f}{:s}'.format(
+        print('Flux center:              axis1 = {:.1f} ; axis2 = {:.1f}{:s}'.format(
             rowcentroid, colcentroid, flux_plotnote))
         if source == 'diffuse':
-            print('Geometric center:         x = {:.1f} ; y = {:.1f}{:s}'.format(
+            print('Geometric center:         axis1 = {:.1f} ; axis2 = {:.1f}{:s}'.format(
                 georowcentroid, geocolcentroid, geo_plotnote))
         
         print('\n(All coordinates are zero-indexed.)')

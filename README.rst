@@ -1,7 +1,7 @@
 HST/STIS Target Acquisition Simulator
 =====================================
 
-See documentation (to be posted) at http://stistarg.readthedocs.io/en/latest/
+See documentation at http://stistarg.readthedocs.io/en/latest/
 
 Utility to simulate HST/STIS target acquisitions with various "optional parameters" 
 available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
@@ -20,18 +20,17 @@ For more information, type ``stistarg --help``::
   Simulate HST/STIS onboard target acquisition algorithm on user data.
   
   positional argument:
-    FILENAME              Input file
+    FILENAME              Input FITS file
   
   optional arguments:
     -h, --help            show this help message and exit
     --ext EXT             Input FITS extension [default=0]
     --point               Point-source algorithm [default]
     --diffuse CHECKBOXSIZE
-                          Diffuse-source algorithm. Specify checkboxsize [odd integer 
-                          3-101]
+                          Diffuse-source algorithm. Specify checkboxsize [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.1a1; Written by Berry & Lockwood
+  Version 2.1a2; Written by Berry & Lockwood
 
 
 Python API

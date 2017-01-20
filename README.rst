@@ -75,4 +75,4 @@ For support, please contact the STScI help desk at help<at>stsci<dot>edu.
 
 .. |conda| image:: https://anaconda.org/sean-lockwood/stistarg/badges/installer/conda.svg
     :alt: conda install
-    :target: https://conda.anaconda.org/sean-lockwood/stistarg
+    :target: https://anaconda.org/sean-lockwood/stistarg

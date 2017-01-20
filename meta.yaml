@@ -1,9 +1,9 @@
 package:
   name: stistarg
-  version: '2.1a2'
+  version: '2.1a3'
 
 source:
-  git_rev: v2.1a2
+  git_rev: v2.1a3
   git_url: https://github.com/spacetelescope/stistarg.git
 
 requirements:

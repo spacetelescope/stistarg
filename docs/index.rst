@@ -50,7 +50,7 @@ For more information, type ``stistarg --help``::
                           [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.1a2; Written by Berry & Lockwood
+  Version 2.1a3; Written by Berry & Lockwood
 
 
 Python API

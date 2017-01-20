@@ -16,8 +16,8 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 Installation
 ------------
 
-`stistarg` is designed to run in the AstroConda_ environment.  After installing it, 
-launch the AstroConda environment::
+`stistarg` is designed to run in the AstroConda_ environment.  After installation, 
+launch it via::
 
   source activate astroconda
 
@@ -50,7 +50,7 @@ For more information, type ``stistarg --help``::
                           [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.1a3; Written by Berry & Lockwood
+  Version 2.1; Written by Berry & Lockwood
 
 
 Python API

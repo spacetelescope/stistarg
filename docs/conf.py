@@ -93,11 +93,15 @@ html_theme = 'alabaster'
 html_theme_options = {
     'logo'            : 'crosshairs.png', 
     'logo_name'       : True, 
-    'description'     : 'Simulate target acquisitions', 
+    'logo_text_align' : 'center', 
+    'description'     : 'simulate target acquisitions', 
     'github_user'     : 'spacetelescope',
-    'github_repo'     : 'stistarg',
+    'github_repo'     : 'stistarg', 
     'github_button'   : True, 
+    'github_count'    : False, 
+    'github_banner'   : True, 
     'travis_button'   : True, 
+    'show_powered_by' : False, 
     'analytics_id'    : 'UA-67123509-3',
     'page_width'      : 1040,}
 

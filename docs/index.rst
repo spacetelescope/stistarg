@@ -12,6 +12,29 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 .. toctree::
    :maxdepth: 2
 
+.. image:: _static/example_o6fm02q7q.png
+   :alt: Example output on o6fm02q7q_raw.fits[1]
+
+.. code-block:: none
+
+  bash$  stistarg --ext 1 --diffuse 7 --display o6fm02q7q_raw.fits
+  --------------------------------------------------------------------------------
+  STIS Target Acquisition Simulator
+  stistarg.pyc v2.1a3
+  Python v2.7.12
+  Run time:  2017-01-20 11:39:03
+  
+  Input File:      o6fm02q7q_raw.fits[1]
+  Input Options:   diffuse source, checkbox size = 7
+  Image Subarray:  (130, 134)
+  
+  Brightest checkbox flux:  16653
+  Flux center:              axis1 = 66.0 ; axis2 = 73.0  [Grey X]
+  Geometric center:         axis1 = 66.0 ; axis2 = 73.0  [Orange X]
+  
+  (All coordinates are zero-indexed.)
+  --------------------------------------------------------------------------------
+
 
 Installation
 ------------
@@ -27,12 +50,26 @@ Then, install the `stistarg` script::
 
   conda install -c sean-lockwood stistarg
 
+------------------------------------------------------------------------------------------
+
+Alternatively, you may download_ and manually install `stistarg` via::
+
+  python setup.py install
+
+.. _download: https://anaconda.org/sean-lockwood/stistarg/files
+
+Note that `stistarg` requires `astropy`_ and `matplotlib`_.
+
+.. _`astropy`: http://www.astropy.org
+.. _`matplotlib`: http://matplotlib.org
 
 Command Line Interface
 ----------------------
 
-For more information, type ``stistarg --help``::
-  
+For more information, type ``stistarg --help``
+
+.. code-block:: none
+
   usage: stistarg [-h] [--ext EXT] [--point | --diffuse CHECKBOXSIZE] [--display]
                   FILENAME
   

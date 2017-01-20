@@ -13,7 +13,6 @@ requirements:
 
   run:
     - python
-    - argparse
     - astropy
     - matplotlib
 

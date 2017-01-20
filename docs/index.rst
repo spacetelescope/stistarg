@@ -20,7 +20,7 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
   bash$  stistarg --ext 1 --diffuse 7 --display o6fm02q7q_raw.fits
   --------------------------------------------------------------------------------
   STIS Target Acquisition Simulator
-  stistarg.pyc v2.1a3
+  stistarg.pyc v2.1
   Python v2.7.12
   Run time:  2017-01-20 11:39:03
   

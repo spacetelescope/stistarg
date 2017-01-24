@@ -22,7 +22,7 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
   STIS Target Acquisition Simulator
   stistarg.pyc v2.1
   Python v2.7.12
-  Run time:  2017-01-20 11:39:03
+  Run time:  2017-01-20 11:39:04
   
   Input File:      o6fm02q7q_raw.fits[1]
   Input Options:   diffuse source, checkbox size = 7

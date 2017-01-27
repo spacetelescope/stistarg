@@ -13,7 +13,7 @@ import numpy as np
 from astropy.io import fits
 
 __author__  = 'Berry & Lockwood'
-__version__ = '2.1'
+__version__ = '2.2'
 __all__ = ['stistarg', 'findcheckbox', 'calculate_flux_centroid', 'display_results']
 
 # For compatibility between Python 2/3:
@@ -64,8 +64,9 @@ def findcheckbox(inarray, checkboxsize):
     ncbCols = nCols - checkboxsize + 1
     
     # Step through the rows and columns of checkboxes:
-    for cbrow in range(ncbRows):
-        for cbCol in range(ncbCols):
+    for cbCol in range(ncbCols):
+        for cbrow in range(ncbRows):
+        
             #Accumulate flux within checkbox:
             checkboxsum = np.sum(inarray[cbrow:cbrow+checkboxsize, cbCol:cbCol+checkboxsize])
             
@@ -212,9 +213,14 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
        * display (bool):       displays results and pauses execution
 
     :Returns:
-       * rowcentroid (float):  x location of centroid using specified flux-centroid algorithm
-       * colcentroid (float):  y location of centroid using specified flux-centroid algorithm
-       * maxFlux (int):        total flux within the brightest checkbox
+       dict of:
+       
+       * checkboxFlux:         maxFlux (int)
+                               total flux within the brightest checkbox
+       * fluxCentroid:         (x (float), y (float))
+                               centroid calculated with flux-centroid algorithm
+       * geometricCentroid:    (x (float), y (float))
+                               centroid calculated with geometric-centroid algorithm
 
     :Note:
        stistarg currently supports only the STIS detector format and scale. 
@@ -230,7 +236,7 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
     with fits.open(filename) as f:
         # Set data extension:
         inarray = f[ext].data.transpose()
-        inarray = inarray[:-4,:]  # Only do this for input STIS target acq data!
+        inarray = inarray[:-5,:]  # Only do this for input STIS target acq data!
         
         # Error check on extension:
         if inarray is None:
@@ -288,8 +294,9 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
         if display:
             display_results(f[ext].data, rowcentroid, colcentroid, x, y, checkboxsize, 
                 georowcentroid, geocolcentroid, filename, ext)
-        
-    return (rowcentroid, colcentroid, maxFlux)
+    
+    return {'checkboxFlux':maxFlux, 'fluxCentroid':(rowcentroid, colcentroid), 
+            'geometricCentroid':(georowcentroid, geocolcentroid)}
 
 
 def parse():

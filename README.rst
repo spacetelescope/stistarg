@@ -30,7 +30,7 @@ For more information, type ``stistarg --help``::
                           Diffuse-source algorithm. Specify checkboxsize [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.1; Written by Berry & Lockwood
+  Version 2.2; Written by Berry & Lockwood
 
 
 Python API
@@ -45,7 +45,7 @@ Python API
 Limitations
 -----------
 
-This alpha release currently supports only the STIS detector format and scale.  The 
+This release currently supports only the STIS detector format and scale.  The 
 capability to use non--STIS data will be added in a future release.  Users wishing to 
 use data from other sources must trim and rescale their input data accordingly.  The 
 STIS CCD plate scale is `0.05078 arcsec/pix`_.

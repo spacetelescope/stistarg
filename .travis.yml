@@ -3,6 +3,10 @@ language: python
 # Setting sudo to false opts in to Travis-CI container-based builds.
 sudo: false
 
+notifications:
+  slack:
+    secure: "HpOSTS1tpKqNbnYgsldGkvWaxMV4u3GafXjmVtLRq5zu46qC9ttTn3RJ7Syss9mGvhWN8E/djt6rY3CxRO0q1pG+LtGtvbtN8p02XdzJ2AJ9g4molv3FCYQVVl+kAZyKnFABmrXhRWE+ctAPsdYI6wk7w2BGBDND+xlfyfQboX5NDOAHw40Cx0A1xOmbd/0DMluBbkVz/5nLs0gVmrXG3gZKycj2fLa0E3zL8gzZL0oXJVtst0vSOmqY58LrdXUS0YMVuXII/mOFLt1BhzOrzs6c8wfj0TuqhEkffPMjxZR+wmKwKPE5PWYx14le2ZxgJ5ar7ZlJq7X1lzVIbP+jbNy5r2KDPQNnSR/I+Sjdf5vmshMeRsD/MfHCN5najC5NeYvnq+M2qtIXIjVuHLyPnm/FD+cMEjuL5tQgd2KDVcJHKM/SfUhQFC29IiA9AeYR/BtcKUhMGViroUXhJVSl+K8Vuayhba38XEiExwcd4/bTX1bJyb60clAMWILE6CHU6xbUPfuGNtBBZyNMjRbnlaLwCx8a8T+8+P+jC5lUl2f5wxSBDeIKF8Ot7s7a679Qz7RdX/thQlf/HBSMY+IAZaFXTO7eZdWP3Ivy9RBbrjin2N8O+ehj+hoY6fRL+HXiFnLsMBzkHqg7Kn4TdJt2hpuKWRgisvwVRHPAT3j0nrE="
+
 # The apt packages below are needed for sphinx builds, which can no longer
 # be installed with sudo apt-get.
 #addons:

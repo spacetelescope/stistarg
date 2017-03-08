@@ -57,7 +57,7 @@ class TestCheckbox(object):
     def test1(self):
         filename = os.path.join(self.tmpdir, 'test1.fits')
         arr = gaussarr(15, 30, fwhm=10, height=100)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 16. - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 31. - 1., places=5)
@@ -66,7 +66,7 @@ class TestCheckbox(object):
     def test2(self):
         filename=os.path.join(self.tmpdir, 'test2.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 31 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 16 - 1., places=5)
@@ -75,7 +75,7 @@ class TestCheckbox(object):
     def test3(self):
         filename = os.path.join(self.tmpdir, 'test3.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100) + gaussarr(40, 25, fwhm=10, height=100)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 31.002251 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 16.002251 - 1., places=5)
@@ -84,7 +84,7 @@ class TestCheckbox(object):
     def test4(self):
         filename = os.path.join(self.tmpdir, 'test4.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100) + gaussarr(40, 25, fwhm=10, height=200)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 40.998863 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 25.998861 - 1., places=5)
@@ -93,7 +93,7 @@ class TestCheckbox(object):
     def test5(self):
         filename = os.path.join(self.tmpdir, 'test5.fits')
         arr = gaussarr(15, 30, fwhm=10, height=100) 
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='diffuse', checkboxsize=25)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 16 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 31 - 1., places=5)
@@ -102,7 +102,7 @@ class TestCheckbox(object):
     def test6(self):
         filename = os.path.join(self.tmpdir, 'test6.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='diffuse', checkboxsize=25)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 31 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 16 - 1., places=5)
@@ -111,7 +111,7 @@ class TestCheckbox(object):
     def test7(self):
         filename = os.path.join(self.tmpdir, 'test7.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100) + gaussarr(40, 25, fwhm=10, height=100)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='diffuse', checkboxsize=25)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 36 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 21 - 1., places=5)
@@ -120,7 +120,7 @@ class TestCheckbox(object):
     def test8(self):
         filename = os.path.join(self.tmpdir, 'test8.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100) + gaussarr(40, 25, fwhm=10, height=200)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='diffuse', checkboxsize=25)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 37.835854 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 22.835852 - 1., places=5)
@@ -129,7 +129,7 @@ class TestCheckbox(object):
     def test12(self):
         filename = os.path.join(self.tmpdir, 'test12.fits')
         arr = gaussarr(60, 80, fwhm=10, height=200) + gaussarr(39.5, 54.5, fwhm=10, height=201)+write_slope()
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 61.000000 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 81.002426 - 1., places=5)
@@ -138,7 +138,7 @@ class TestCheckbox(object):
     def test13(self):
         filename = os.path.join(self.tmpdir, 'test13.fits')
         arr = gaussarr(60, 80, fwhm=10, height=300) + gaussarr(39.5, 54.5, fwhm=10, height=201)+write_slope()
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 61.000000 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 81.001793 - 1., places=5)
@@ -147,7 +147,7 @@ class TestCheckbox(object):
     def test14(self):
         filename = os.path.join(self.tmpdir, 'test14.fits')
         arr = gaussarr(60, 75, fwhm=30, height=75) + gaussarr(40, 50, fwhm=10, height=100)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='diffuse', checkboxsize=33)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 60.986961 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 75.986252 - 1., places=5)
@@ -156,7 +156,7 @@ class TestCheckbox(object):
     def test_original(self):
         filename = os.path.join(self.tmpdir, 'test_original.fits')
         arr = gaussarr(30, 15, fwhm=10, height=100) + gaussarr(40, 25, fwhm=10, height=200)
-        fits.writeto(filename, arr, clobber=True)
+        fits.writeto(filename, arr, overwrite=True)
         stistarg_results = stistarg.stistarg(filename, source='diffuse', checkboxsize=25)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 37.835854 - 1., places=5)  # Results from Solaris binary
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 22.835852 - 1., places=5)  # Results from Solaris binary

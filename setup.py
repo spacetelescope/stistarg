@@ -31,7 +31,7 @@ setup(
                    'Topic :: Scientific/Engineering :: Physics',
                    'Topic :: Software Development :: Libraries :: Python Modules'],
     packages = ['stistarg'],
-    install_requires = ['setuptools', 'numpy', 'astropy', 'matplotlib'],
+    install_requires = ['setuptools', 'numpy', 'astropy>=1.3', 'matplotlib'],
     entry_points={
           'console_scripts': ['stistarg = stistarg.stistarg:parse']},
     )

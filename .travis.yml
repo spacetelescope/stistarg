@@ -51,14 +51,16 @@ install:
     # Useful for debugging any issues with conda
     - conda info -a
 
-    # ADD STSCI ASTROCONDA CHANNEL
+    # Add STScI Astroconda channel, but don't install all stsci packages:
     - conda config --add channels defaults
     - conda config --add channels http://ssb.stsci.edu/astroconda
 
-    # Replace dep1 dep2 ... with your dependencies
-    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION stsci
+    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION nose
     - source activate test-environment
-    - python setup.py install
+
+    # Test building and installing the conda package:
+    - conda build ./build.sh
+    - conda install stistarg --use-local
 
 script:
     - nosetests -v stistarg/unit_tests.py

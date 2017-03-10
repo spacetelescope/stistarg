@@ -55,7 +55,11 @@ install:
     - conda config --add channels defaults
     - conda config --add channels http://ssb.stsci.edu/astroconda
 
-    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION conda-build nose
+    # Install conda build tools in root:
+    - conda install -n root conda-build
+
+    # Create and activate test environment:
+    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION nose
     - source activate test-environment
 
     # Test building and installing the conda package:

@@ -63,7 +63,8 @@ install:
     - source activate test-environment
 
     # Test building and installing the conda package:
-    - conda build ./build.sh
+    - export python=$TRAVIS_PYTHON_VERSION
+    - source build.sh
     - conda install stistarg --use-local
 
 script:

@@ -73,4 +73,4 @@ script:
     - coverage run --omit='*test*' $(which nosetests) -v stistarg/unit_tests.py
 
 after_success:
-    - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then coveralls; fi
+    - coveralls

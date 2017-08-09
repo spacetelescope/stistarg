@@ -59,7 +59,7 @@ install:
     - conda install -n root conda-build
 
     # Create and activate test environment:
-    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION nose
+    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION nose coverage
     - source activate test-environment
 
     # Test building and installing the conda package:

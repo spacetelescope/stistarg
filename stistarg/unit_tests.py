@@ -2,6 +2,7 @@ import stistarg
 import numpy as np
 from astropy.io import fits
 import os
+import warnings
 import glob
 import tempfile
 #from nose.tools import assert_equal, assert_not_equal, assert_raises, raises
@@ -42,9 +43,17 @@ class TestCheckbox(object):
     @classmethod
     def setup_class(cls):
         '''This method is run once for each class before any tests are run.'''
+        import matplotlib
+        matplotlib.use('Agg')  # prevents plotting to a window
+        warnings.filterwarnings('ignore', 
+            message='matplotlib is currently using a non-GUI backend, so cannot show the figure', 
+            module='matplotlib')
+        
+        # Don't require user input in order to exit after displaying results:
+        stistarg.WAIT = lambda x: x
+        
         # Create a temporary directory:
         cls.tmpdir = tempfile.mkdtemp(prefix='tmp_stistarg_')
-        stistarg.WAIT = lambda x: x  # Don't require user input to exit display
     
     @classmethod
     def teardown_class(cls):

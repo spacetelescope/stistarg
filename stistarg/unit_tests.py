@@ -50,7 +50,7 @@ class TestCheckbox(object):
             module='matplotlib')
         
         # Don't require user input in order to exit after displaying results:
-        stistarg.WAIT = lambda x: x
+        stistarg.stistarg.__globals__['WAIT'] = lambda x: x
         
         # Create a temporary directory:
         cls.tmpdir = tempfile.mkdtemp(prefix='tmp_stistarg_')

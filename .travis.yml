@@ -70,7 +70,11 @@ install:
     - pip install coveralls
 
 script:
-    - coverage run --omit='*test*' $(which nosetests) -v stistarg/unit_tests.py
+    - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then
+          coverage run --omit='*test*' $(which nosetests) -v stistarg/unit_tests.py;
+      else
+          nosetests -v stistarg/unit_tests.py;
+      fi
 
 after_success:
-    - coveralls
+    - if [[ "$TRAVIS_PYTHON_VERSION" == "2.7" ]]; then coveralls; fi

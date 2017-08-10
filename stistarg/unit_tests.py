@@ -44,6 +44,7 @@ class TestCheckbox(object):
         '''This method is run once for each class before any tests are run.'''
         # Create a temporary directory:
         cls.tmpdir = tempfile.mkdtemp(prefix='tmp_stistarg_')
+        stistarg.WAIT = lambda x: x  # Don't require user input to exit display
     
     @classmethod
     def teardown_class(cls):
@@ -58,7 +59,7 @@ class TestCheckbox(object):
         filename = os.path.join(self.tmpdir, 'test1.fits')
         arr = gaussarr(15, 30, fwhm=10, height=100)
         fits.writeto(filename, arr, overwrite=True)
-        stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3)
+        stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3, display=True)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 16. - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 31. - 1., places=5)
         assert_almost_equals( stistarg_results['checkboxFlux'], 877, places=5)

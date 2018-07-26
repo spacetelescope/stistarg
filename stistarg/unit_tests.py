@@ -6,7 +6,7 @@ import warnings
 import glob
 import tempfile
 #from nose.tools import assert_equal, assert_not_equal, assert_raises, raises
-from nose.tools import assert_almost_equals
+from nose.tools import assert_almost_equals, assert_equals
 
 # To run activate astroconda, then enter:
 #   nosetests -v unit_tests.py
@@ -72,6 +72,8 @@ class TestCheckbox(object):
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 16. - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 31. - 1., places=5)
         assert_almost_equals( stistarg_results['checkboxFlux'], 877, places=5)
+        assert_equals(stistarg_results['checkbox_x'], 14)
+        assert_equals(stistarg_results['checkbox_y'], 29)
         
     def test2(self):
         filename=os.path.join(self.tmpdir, 'test2.fits')
@@ -108,6 +110,8 @@ class TestCheckbox(object):
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 16 - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 31 - 1., places=5)
         assert_almost_equals( stistarg_results['checkboxFlux'], 11861, places=5)
+        assert_equals(stistarg_results['checkbox_x'], 3)
+        assert_equals(stistarg_results['checkbox_y'], 18)
         
     def test6(self):
         filename = os.path.join(self.tmpdir, 'test6.fits')

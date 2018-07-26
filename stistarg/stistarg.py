@@ -13,7 +13,7 @@ import numpy as np
 from astropy.io import fits
 
 __author__  = 'Berry & Lockwood'
-__version__ = '2.2'
+__version__ = '2.3'
 __all__ = ['stistarg', 'findcheckbox', 'calculate_flux_centroid', 'display_results']
 
 # For compatibility between Python 2/3:
@@ -221,6 +221,8 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
                                centroid calculated with flux-centroid algorithm
        * geometricCentroid:    (x (float), y (float))
                                centroid calculated with geometric-centroid algorithm
+       * checkbox_x:           lower-left corner X-coordinate of checkbox
+       * checkbox_y:           lower-left corner Y-coordinate of checkbox
 
     :Note:
        stistarg currently supports only the STIS detector format and scale. 
@@ -296,7 +298,8 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
                 georowcentroid, geocolcentroid, filename, ext)
     
     return {'checkboxFlux':maxFlux, 'fluxCentroid':(rowcentroid, colcentroid), 
-            'geometricCentroid':(georowcentroid, geocolcentroid)}
+            'geometricCentroid':(georowcentroid, geocolcentroid), 
+            'checkbox_x':x , 'checkbox_y':y}
 
 
 def parse():

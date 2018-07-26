@@ -23,7 +23,7 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
   bash$  stistarg --ext 1 --diffuse 7 --display o6fm02q7q_raw.fits
   --------------------------------------------------------------------------------
   STIS Target Acquisition Simulator
-  stistarg.pyc v2.2
+  stistarg.pyc v2.3
   Python v2.7.12
   Run time:  2017-01-20 11:39:04
   
@@ -90,7 +90,7 @@ For more information, type ``stistarg --help``
                           [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.2; Written by Berry & Lockwood
+  Version 2.3; Written by Berry & Lockwood
 
 
 Python API

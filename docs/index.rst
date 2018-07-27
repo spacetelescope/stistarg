@@ -107,15 +107,18 @@ Auxiliary Functions
 .. autofunction:: stistarg.display_results
 
 
+.. include:: acq_stability.rst
+
+
 Limitations
 -----------
 
 This release currently supports only the STIS detector format and scale.  The 
 capability to use non--STIS data will be added in a future release.  Users wishing to 
 use data from other sources must trim and rescale their input data accordingly.  The 
-STIS CCD plate scale is `0.05078 arcsec/pix`_.
+STIS CCD plate scale is `0.05072 arcsec/pix`_.
 
-.. _`0.05078 arcsec/pix`: http://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
+.. _`0.05072 arcsec/pix`: http://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
 
 Furthermore, `stistarg` assumes the use of STIS acquisition image data and trims out the 
 last five columns from the input array before performing calculations (these are normally 
@@ -125,4 +128,6 @@ hot).  To skip this behavior, users should pad their data accordingly.
 Support
 -------
 
-For support, please contact the STScI help desk at help<at>stsci<dot>edu.
+For support, please contact the `STScI HST help desk`_.
+
+.. _`STScI HST help desk`: https://hsthelp.stsci.edu

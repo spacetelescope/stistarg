@@ -31,8 +31,10 @@ class Mock(MagicMock):
     def __getattr__(cls, name):
         return MagicMock()
 
-MOCK_MODULES = ['numpy', 'matplotlib', 'astropy', 'scipy', 'stistools', ]
+MOCK_MODULES = ['numpy', 'matplotlib', 'matplotlib.pyplot', 'argparse', 'astropy', 
+    'astropy.io', 'scipy', 'stistools', ]
 sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
+
 
 # -- General configuration ------------------------------------------------
 

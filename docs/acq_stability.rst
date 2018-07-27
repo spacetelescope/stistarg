@@ -2,7 +2,7 @@
 Example Usage: ``checkboxsize`` Stability
 -----------------------------------------
 
-.. code:: ipython3
+.. code:: python
 
     import stistarg
     
@@ -29,7 +29,7 @@ Example Usage: ``checkboxsize`` Stability
 
 
 
-.. code:: ipython3
+.. code:: python
 
     filename = 'o6fm02q7q_raw.fits'
     
@@ -60,7 +60,7 @@ Plotting the various flux centroid positions found by the simulator:
 
 And now plot these vs `checkboxsize`:
 
-.. code:: ipython3
+.. code:: python
 
     fig, axes = plt.subplots(2, 1, sharex=True)
     fig.set_size_inches(10, 7)
@@ -91,7 +91,7 @@ slight variations in the detected scene count rates could give
 unpredictable results. Varying the parameter allows users to determine
 stable regimes.
 
-.. code:: ipython3
+.. code:: python
 
     stistarg.stistarg(filename, ext=1, source='diffuse', checkboxsize=3, display=True)
 
@@ -124,7 +124,7 @@ The smaller `checkboxsize` found a small bright feature within the galaxy:
 
 The larger `checkboxsize` found the center of the galaxy:
 
-.. code:: ipython3
+.. code:: python
 
     stistarg.stistarg(filename, ext=1, source='diffuse', checkboxsize=17, display=True)
 

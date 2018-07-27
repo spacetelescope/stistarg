@@ -19,7 +19,20 @@
 import alabaster
 import os
 import sys
+try:
+    from unittest.mock import MagicMock
+except ImportError:
+    from mock import MagicMock
 sys.path.insert(0, os.path.abspath('../stistarg'))
+
+
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls, name):
+        return MagicMock()
+
+MOCK_MODULES = ['np', 'astropy.io']
+sys.modules.update((mod_name, Mock()) for mod_name in MOCK_MODULES)
 
 # -- General configuration ------------------------------------------------
 

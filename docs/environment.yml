@@ -6,3 +6,4 @@ dependencies:
   - stsci.distutils
   - stsci.tools
   - stsci.ndimage
+  - sphinxcontrib-programoutput

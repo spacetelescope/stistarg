@@ -11,9 +11,8 @@ import os
 import sys
 import numpy as np
 from astropy.io import fits
+from .version import __version__, __author__, __docs_url__
 
-__author__  = 'Berry & Lockwood'
-__version__ = '2.3'
 __all__ = ['stistarg', 'findcheckbox', 'calculate_flux_centroid', 'display_results']
 
 # For compatibility between Python 2/3:

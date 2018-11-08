@@ -10,20 +10,10 @@ notifications:
     on_success: change
     on_failure: always
 
-# The apt packages below are needed for sphinx builds, which can no longer
-# be installed with sudo apt-get.
-#addons:
-#    apt:
-#        packages:
-#            - graphviz
-#            - texlive-latex-extra
-#            - dvipng
-
 os: linux
 
 python:
-    - "2.7"
-    - "3.4"
+    #- "2.7"
     - "3.5"
     - "3.6"
 

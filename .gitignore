@@ -6,3 +6,6 @@ doc/_build/
 .DS_Store
 targacq.a
 .coverage
+stistarg/version.py
+dist/
+stistarg.egg-info/

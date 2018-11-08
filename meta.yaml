@@ -1,10 +1,10 @@
 package:
-  name: stistarg
-  version: '2.3'
+  name        : stistarg
+  version     : '2.4'
 
 source:
-  git_rev: v2.3
-  git_url: https://github.com/spacetelescope/stistarg.git
+  git_rev: 'v2.4'
+  git_url: 'https://github.com/spacetelescope/stistarg.git'
 
 requirements:
   build:
@@ -17,11 +17,13 @@ requirements:
     - matplotlib
 
 about:
-  home: http://stistarg.readthedocs.io/en/latest/
-  license: BSD-new
-  license_file: LICENSE.txt
-  summary: simulates HST/STIS target acquisitions
+  home         : 'https://stistarg.readthedocs.io'
+  license      : 'BSD-new'
+  license_file : 'LICENSE.txt'
+  summary      : 'simulates HST/STIS target acquisitions'
 
 extra:
-  maintainer: Sean Lockwood
-  maintainer_email: help@stsci.edu
+  maintainer       : 'Sean Lockwood'
+  maintainer_email : 'help@stsci.edu'
+  author           : 'Sean Lockwood & Bralen Berry'
+  docs_url         : 'https://stistarg.readthedocs.io'

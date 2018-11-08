@@ -2,9 +2,6 @@ package:
   name        : stistarg
   version     : '2.4'
 
-source:
-  git_url: 'https://github.com/spacetelescope/stistarg.git'
-
 requirements:
   build:
     - python

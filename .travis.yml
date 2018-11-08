@@ -40,15 +40,9 @@ install:
     - conda config --add channels http://ssb.stsci.edu/astroconda
 
     # Create and activate test environment:
-    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION nose coverage yaml pyyaml
+    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pytest yaml pyyaml
     - source activate test-environment
     - ./setup.py install
 
-    # Install coverage tool:
-    - pip install coveralls
-
 script:
-    - coverage run --omit='*test*' $(which nosetests) -v stistarg
-
-after_success:
-    - coveralls
+    - pytest -vv stistarg/_unit_tests.py

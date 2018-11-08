@@ -40,7 +40,7 @@ install:
     - conda config --add channels http://ssb.stsci.edu/astroconda
 
     # Create and activate test environment:
-    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pytest yaml pyyaml
+    - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION nose pytest yaml pyyaml
     - source activate test-environment
     - ./setup.py install
 

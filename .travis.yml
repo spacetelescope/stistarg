@@ -3,6 +3,13 @@ language: python
 # Setting sudo to false opts in to Travis-CI container-based builds.
 sudo: false
 
+notifications:
+  slack:
+    rooms:
+      - secure: "NZHt9kv4ky3+hrH43sW+uFMI+0qPeElkoHoCmvTAsxHW+DPi52UKfc+/CXDrClA+GIi/c5P+gFzAmXvDk9a1Vn/zwVpYhm4gdeWWQDhRSezJEJ5A09RXLNzJxE02zWXVVDbt4ZKECi8tUASDjvCSAcmQB+sdtPKGnnaNkGdYMtu5xJ+xCzQs9+Ft3M5E8X6CtUlt33T+tOM/IgFddEJos7cfoDtdTki0d9CWeMvlEPOxOceBPhgYY7Le8bSATgLRfFmBciFPEpm65Y/dsWX1TwHhZPLU8buXqaUC5jvWCSNmXZsWZZ6FaewtiMlA4Z4jPEVVyJdOwix64GAjvESZk66f7WOb+sblKbxYgLrAHjdOfpbkBFqewxGIUx0cL1kyu2Xo8cM10wTMPrigRX0sv40J9kKykZ8SlB0oEkptrpnWgJZmJUc3cwOLSqhsmvtY0v4npDpiaO46rjdm365QOvexxHCO2btDrGG34w+7yoRSlWrzvkhI3QTx0BHwj1SAOoSGKLAg9W0/eLrTORrdxJgT3R4oG2/mlICi3MBrZ6DCFxl55rQn1b+AbINojfn91yeED/dxVDjXo9T/0lRkR7r02MR7ACNcqDdWzaOngd80/m1s8EnDeNTq/qrOt/+cBuGcR2UT9ZXYVkx7NRuJz71kQo2JJNtA00W68I0Z+u4="
+    on_success: change
+    on_failure: always
+
 os: linux
 
 python:

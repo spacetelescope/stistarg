@@ -9,3 +9,5 @@ dependencies:
   - sphinxcontrib-programoutput
   - yaml
   - pyyaml
+python:
+    version: 3.6

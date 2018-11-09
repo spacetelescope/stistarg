@@ -6,3 +6,11 @@ dependencies:
   - stsci.distutils
   - stsci.tools
   - stsci.ndimage
+  - sphinxcontrib-programoutput
+  - yaml
+  - pyyaml
+python:
+    version: 3.6
+    extra_requirements:
+        - yaml
+        - pyyaml

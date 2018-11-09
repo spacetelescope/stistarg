@@ -71,26 +71,7 @@ Command Line Interface
 
 For more information, type ``stistarg --help``
 
-.. code-block:: none
-
-  usage: stistarg [-h] [--ext EXT] [--point | --diffuse CHECKBOXSIZE] [--display]
-                  FILENAME
-  
-  Simulate HST/STIS onboard target acquisition algorithm on user data.
-  
-  positional argument:
-    FILENAME              Input FITS file
-  
-  optional arguments:
-    -h, --help            show this help message and exit
-    --ext EXT             Input FITS extension [default=0]
-    --point               Point-source algorithm [default]
-    --diffuse CHECKBOXSIZE
-                          Diffuse-source algorithm. Specify checkboxsize
-                          [odd integer 3-101]
-    --display, -d         Display results with matplotlib.pyplot
-  
-  Version 2.3; Written by Berry & Lockwood
+.. command-output:: stistarg -h
 
 
 Python API

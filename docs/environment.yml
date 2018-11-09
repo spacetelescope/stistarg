@@ -11,3 +11,6 @@ dependencies:
   - pyyaml
 python:
     version: 3.6
+    extra_requirements:
+        - yaml
+        - pyyaml

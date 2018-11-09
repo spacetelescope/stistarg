@@ -7,3 +7,5 @@ dependencies:
   - stsci.tools
   - stsci.ndimage
   - sphinxcontrib-programoutput
+  - yaml
+  - pyyaml

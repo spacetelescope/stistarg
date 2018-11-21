@@ -16,7 +16,7 @@ else:
 setup(
     name = 'stistarg',
     url = 'http://www.stsci.edu/instruments/stis/',
-    version = '2.3',
+    version = '2.4',
     description = 'HST/STIS Target Acquisition Simulator',
     long_description = long_description,
     author = 'Sean Lockwood, Bralen Berry',

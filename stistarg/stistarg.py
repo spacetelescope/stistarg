@@ -11,9 +11,10 @@ import os
 import sys
 import numpy as np
 from astropy.io import fits
+from matplotlib import pyplot as plt
 
 __author__  = 'Berry & Lockwood'
-__version__ = '2.3'
+__version__ = '2.4'
 __all__ = ['stistarg', 'findcheckbox', 'calculate_flux_centroid', 'display_results']
 
 # For compatibility between Python 2/3:
@@ -131,18 +132,32 @@ def calculate_flux_centroid(inarray, x, y, checkboxsize, centroidmode='flux'):
 def validate_inputs(filename, ext, checkboxsize, source):
     if not os.access(filename, os.F_OK):
         raise IOError('Cannot access FITS file:  {:s}'.format(filename))
-    if (ext < 0) or not isinstance(ext, INTEGER_TYPES):
-        raise IOError('FITS file extension not a valid positive integer.')
+    if (ext is not None) and ((ext < 0) or not isinstance(ext, INTEGER_TYPES)):
+        raise IOError('FITS file extension not a valid positive integer or None.')
+    
+    # Allow STIS data to be run on both SCI extensions:
+    hdr0 = fits.getheader(filename, ext=0)
+    if (ext is None) and (hdr0.get('TELESCOP','') != 'HST'  or \
+                          hdr0.get('INSTRUME','') != 'STIS' or \
+                          hdr0.get('OBSMODE', '') != 'ACQ'):
+        raise IOError('FITS file is not an HST/STIS acquisition.  Must specify ext!')
+    elif ext is None:
+        exts = [1, 4]
+    else:
+        exts = [ext]
+    
     if checkboxsize not in range(3, 101+1, 2):
         raise IOError('checkbox size is not an odd integer in 3-101:  {}'.format(checkboxsize))
     if source not in ['point', 'diffuse']:
         raise IOError('Source-finding algorithm must be either "point" or "diffuse":  {}'.format(source))
     if source == 'point' and checkboxsize != 3:
         raise IOError('Checkbox size must be 3 pixels for point-source finding algorithm.')
+    
+    return exts
 
 
 def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, geo_y=None, 
-    filename=None, ext=None):
+                    filename=None, ext=None, fig=None, ax=None):
     '''Displays the input array annotated with the brightest checkbox 
     and flux/geometric positions.
     
@@ -159,9 +174,6 @@ def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, g
        * filename (str):    filename to be used in image title
        * ext (int):         extension number to be used in image title
     '''
-    from matplotlib import pyplot as plt
-    plt.ion()
-    
     # Determine inner-98% flux range:
     sorted_arr = arr.flatten()
     sorted_arr.sort()
@@ -171,36 +183,36 @@ def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, g
         vmin = np.min(sorted_arr)  #   0% flux level
         vmax = np.max(sorted_arr)  # 100% flux level
     
-    fig, ax = plt.subplots()
+    if (fig is None) or (ax is None):
+        fig, ax = plt.subplots()
+    
     # Display data:
-    img = ax.imshow(arr, origin='lower', aspect='auto', interpolation='nearest', cmap='viridis', 
-        vmin=vmin, vmax=vmax)
+    img = ax.imshow(arr, origin='lower', aspect='auto', interpolation='nearest', 
+        cmap='magma_r', vmin=vmin, vmax=vmax)
     if filename is not None:
         ax.set_title('{:s}[{:.0f}]'.format(filename, ext))
     ax.set_xlabel('axis1 [pix]')
     ax.set_ylabel('axis2 [pix]')
-    cb = fig.colorbar(img)
+    cb = fig.colorbar(img, ax=ax)
     cb.set_label('Flux')
-    # Plot grey X at flux centroid coordinate:
-    ax.plot(flux_x, flux_y, 'x', color='0.40', markersize=12, mew=2, alpha=0.8)
+    # Plot cyan X at flux centroid coordinate:
+    ax.plot(flux_x, flux_y, 'x', color='c', markersize=12, mew=2, alpha=0.7)
     if geo_x is not None and geo_y is not None:
         # Plot orange X at geometric centroid coordinate:
-        ax.plot(geo_x, geo_y, 'x', color='#FFA500', markersize=12, mew=2, alpha=0.8)
+        ax.plot(geo_x, geo_y, 'x', color='g', markersize=12, mew=2, alpha=0.7)
     # Plot checkbox boundaries:
     ax.plot(
         [chkx - 0.5, chkx - 0.5, chkx + checkboxsize - 0.5, chkx + checkboxsize - 0.5, chkx - 0.5], 
         [chky - 0.5, chky + checkboxsize - 0.5, chky + checkboxsize - 0.5, chky - 0.5, chky - 0.5], 
-        'w')
+        'c')
     
     # Explicitly set plotting boundaries:
     ax.set_xlim(0, np.shape(arr)[1])
     ax.set_ylim(0, np.shape(arr)[0])
-    
     fig.show()
-    tmp = WAIT('Press ENTER to exit... ')
 
 
-def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
+def stistarg(filename, ext=None, source='point', checkboxsize=3, display=False):
     '''HST/STIS Target Acquisition Simulator
 
     :Args:
@@ -233,73 +245,91 @@ def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):
     source = source.lower()
     
     # Check user inputs:
-    validate_inputs(filename, ext, checkboxsize, source)
+    exts = validate_inputs(filename, ext, checkboxsize, source)
     
+    # Program/system info:
+    print('-'*80)
+    print('STIS Target Acquisition Simulator')
+    print('{:s} v{:s}'.format(os.path.basename(__file__), __version__))
+    print('Python v{:s}'.format(sys.version.split(' ')[0]))
+    print('Run time:  {:s}'.format(datetime.now().isoformat(' ').rsplit('.',1)[0]))
+    print('Input Options:   {:s} source, checkbox size = {:.0f}'.format(source, checkboxsize))
+    
+    if display:
+        fig, axes = plt.subplots(1, len(exts), sharex=True, sharey=True)
+        plt.ion()
+        if len(exts) == 1:
+            fig.set_size_inches(6, 5)
+            axes = [axes]
+        else:
+            fig.set_size_inches(12, 5)
+    
+    res = {}
     with fits.open(filename) as f:
-        # Set data extension:
-        inarray = f[ext].data.transpose()
-        inarray = inarray[:-5,:]  # Only do this for input STIS target acq data!
-        
-        # Error check on extension:
-        if inarray is None:
-            raise Exception ('No data found:  Try a different extension.')
-        
-        # Use findcheckbox function:
-        x, y, maxFlux = findcheckbox(inarray, checkboxsize)
-        
-        if source == 'point':
-             # use function calculate_flux_centroid for Point source
-             # returns flux weighted centroid
-            rowcentroid, colcentroid = calculate_flux_centroid(inarray, x, y, checkboxsize, 'flux')
-            georowcentroid, geocolcentroid = None, None
-        elif source == 'diffuse':
-            # use function calculate_flux_centroid for Diffuse source
-            # returns geometric and flux weighted centroids 
-            georowcentroid, geocolcentroid = \
-                calculate_flux_centroid(inarray, x, y, checkboxsize, 'geometric')
-            rowcentroid, colcentroid = \
-                calculate_flux_centroid(inarray, x, y, checkboxsize, 'flux')
-        else:
-            raise Exception('Source type must be "point" or "diffuse".')
-        
-        # Program/system info:
-        print('-'*80)
-        print('STIS Target Acquisition Simulator')
-        print('{:s} v{:s}'.format(os.path.basename(__file__), __version__))
-        print('Python v{:s}'.format(sys.version.split(' ')[0]))
-        print('Run time:  {:s}\n'.format(datetime.now().isoformat(' ').rsplit('.',1)[0]))
-        
-        # User inputs:
-        print('Input File:      {:s}[{:.0f}]'.format(filename, ext))
-        print('Input Options:   {:s} source, checkbox size = {:.0f}'.format(
-            source, checkboxsize))
-        print('Image Subarray:  {}\n'.format(np.shape(inarray)))
-        
-        # Outputs:
-        print('Brightest checkbox flux:  {}'.format(maxFlux))
-        if display:
-            flux_plotnote = '  [Grey X]'
-            geo_plotnote  = '  [Orange X]'
-        else:
-            flux_plotnote = ''
-            geo_plotnote  = ''
-        
-        print('Flux center:              axis1 = {:.1f} ; axis2 = {:.1f}{:s}'.format(
-            rowcentroid, colcentroid, flux_plotnote))
-        if source == 'diffuse':
-            print('Geometric center:         axis1 = {:.1f} ; axis2 = {:.1f}{:s}'.format(
-                georowcentroid, geocolcentroid, geo_plotnote))
-        
-        print('\n(All coordinates are zero-indexed.)')
-        print('-'*80 + '\n')
-        
-        if display:
-            display_results(f[ext].data, rowcentroid, colcentroid, x, y, checkboxsize, 
-                georowcentroid, geocolcentroid, filename, ext)
-    
-    return {'checkboxFlux':maxFlux, 'fluxCentroid':(rowcentroid, colcentroid), 
+        for i, ext in enumerate(exts):
+            # Set data extension:
+            inarray = f[ext].data.transpose()
+            inarray = inarray[:-5,:]  # Only do this for input STIS target acq data!
+            
+            # Error check on extension:
+            if inarray is None:
+                raise Exception ('No data found:  Try a different extension.')
+            
+            # Use findcheckbox function:
+            x, y, maxFlux = findcheckbox(inarray, checkboxsize)
+            
+            if source == 'point':
+                 # use function calculate_flux_centroid for Point source
+                 # returns flux weighted centroid
+                rowcentroid, colcentroid = calculate_flux_centroid(inarray, x, y, checkboxsize, 'flux')
+                georowcentroid, geocolcentroid = None, None
+            elif source == 'diffuse':
+                # use function calculate_flux_centroid for Diffuse source
+                # returns geometric and flux weighted centroids 
+                georowcentroid, geocolcentroid = \
+                    calculate_flux_centroid(inarray, x, y, checkboxsize, 'geometric')
+                rowcentroid, colcentroid = \
+                    calculate_flux_centroid(inarray, x, y, checkboxsize, 'flux')
+            else:
+                raise Exception('Source type must be "point" or "diffuse".')
+            
+            # User inputs:
+            print('\nInput File:      {:s}[{:.0f}]'.format(filename, ext))
+            print('Image Subarray:  {}'.format(np.shape(inarray)))
+            
+            # Outputs:
+            print('Brightest checkbox flux:  {}'.format(maxFlux))
+            if display:
+                flux_plotnote = '  [cyan X]'
+                geo_plotnote  = '  [green X]'
+            else:
+                flux_plotnote = ''
+                geo_plotnote  = ''
+            
+            print('Flux center:              axis1 = {:.1f} ; axis2 = {:.1f}{:s}'.format(
+                rowcentroid, colcentroid, flux_plotnote))
+            if source == 'diffuse':
+                print('Geometric center:         axis1 = {:.1f} ; axis2 = {:.1f}{:s}'.format(
+                    georowcentroid, geocolcentroid, geo_plotnote))
+            
+            if display:
+                display_results(f[ext].data, rowcentroid, colcentroid, x, y, checkboxsize, 
+                    georowcentroid, geocolcentroid, filename, ext, fig=fig, ax=axes[i])
+            
+            res['ext{}'.format(ext)] = {'checkboxFlux':maxFlux, 'fluxCentroid':(rowcentroid, colcentroid), 
             'geometricCentroid':(georowcentroid, geocolcentroid), 
             'checkbox_x':x , 'checkbox_y':y}
+    
+    print('\n(All coordinates are zero-indexed.)')
+    print('-'*80 + '\n')
+    
+    if len(res) == 1:
+        res = list(res.values())[0]
+    
+    if display:
+        tmp = WAIT('Press ENTER to exit... ')
+    
+    return res
 
 
 def parse():
@@ -315,7 +345,7 @@ def parse():
     parser.add_argument('filename', metavar='FILENAME', help='Input FITS file', type=str)
     
     # Data are in extension:
-    parser.add_argument('--ext', help='Input FITS extension [default=0]', dest='ext', type=int, default=0)
+    parser.add_argument('--ext', help='Input FITS extension', dest='ext', type=int, default=None)
     
     # Set 'point' or 'diffuse' source-finding algorithm:
     algorithm_group = parser.add_mutually_exclusive_group()

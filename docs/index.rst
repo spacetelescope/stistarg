@@ -47,7 +47,7 @@ installation, launch it via::
 
   source activate astroconda
 
-.. _Astroconda: http://astroconda.readthedocs.io
+.. _Astroconda: https://astroconda.readthedocs.io
 
 Then, install the `stistarg` script::
 
@@ -63,8 +63,8 @@ Alternatively, you may download_ and manually install `stistarg` via::
 
 Note that this package requires `astropy`_ and `matplotlib`_.
 
-.. _`astropy`: http://www.astropy.org
-.. _`matplotlib`: http://matplotlib.org
+.. _`astropy`: https://www.astropy.org
+.. _`matplotlib`: https://matplotlib.org
 
 Command Line Interface
 ----------------------
@@ -118,7 +118,7 @@ capability to use non--STIS data will be added in a future release.  Users wishi
 use data from other sources must trim and rescale their input data accordingly.  The 
 STIS CCD plate scale is `0.05072 arcsec/pix`_.
 
-.. _`0.05072 arcsec/pix`: http://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
+.. _`0.050725 arcsec/pix`: https://hst-docs.stsci.edu/display/STISIHB/14.6+Image+Mode+Geometric+Distortion#id-14.6ImageModeGeometricDistortion-table14.38
 
 Furthermore, `stistarg` assumes the use of STIS acquisition image data and trims out the 
 last five columns from the input array before performing calculations (these are normally 

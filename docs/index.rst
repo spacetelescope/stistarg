@@ -116,7 +116,7 @@ Limitations
 This release currently supports only the STIS detector format and scale.  The 
 capability to use non--STIS data will be added in a future release.  Users wishing to 
 use data from other sources must trim and rescale their input data accordingly.  The 
-STIS CCD plate scale is `0.05072 arcsec/pix`_.
+STIS CCD plate scale is `0.050725 arcsec/pix`_.
 
 .. _`0.050725 arcsec/pix`: https://hst-docs.stsci.edu/display/STISIHB/14.6+Image+Mode+Geometric+Distortion#id-14.6ImageModeGeometricDistortion-table14.38
 

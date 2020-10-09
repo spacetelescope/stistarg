@@ -49,9 +49,6 @@ class TestCheckbox(object):
             message='matplotlib is currently using a non-GUI backend, so cannot show the figure', 
             module='matplotlib')
         
-        # Don't require user input in order to exit after displaying results:
-        stistarg.stistarg.__globals__['WAIT'] = lambda x: x
-        
         # Create a temporary directory:
         cls.tmpdir = tempfile.mkdtemp(prefix='tmp_stistarg_')
     
@@ -68,7 +65,7 @@ class TestCheckbox(object):
         filename = os.path.join(self.tmpdir, 'test1.fits')
         arr = gaussarr(15, 30, fwhm=10, height=100)
         fits.writeto(filename, arr, overwrite=True)
-        stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3, display=True)
+        stistarg_results = stistarg.stistarg(filename, source='point', checkboxsize=3, display=False)
         assert_almost_equals( stistarg_results['fluxCentroid'][0], 16. - 1., places=5)
         assert_almost_equals( stistarg_results['fluxCentroid'][1], 31. - 1., places=5)
         assert_almost_equals( stistarg_results['checkboxFlux'], 877, places=5)

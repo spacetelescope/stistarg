@@ -8,15 +8,10 @@ here = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(here, 'README.rst')) as f:
     long_description = f.read()
 
-if sys.version_info.major == 2:
-    matplotlib_ver = '<3'
-else:
-    matplotlib_ver = ''
-
 setup(
     name = 'stistarg',
     url = 'http://www.stsci.edu/instruments/stis/',
-    version = '2.3',
+    version = '2.4',
     description = 'HST/STIS Target Acquisition Simulator',
     long_description = long_description,
     author = 'Sean Lockwood, Bralen Berry',
@@ -26,9 +21,9 @@ setup(
     license = 'BSD-new',
     keywords = ['astronomy'],
     classifiers = ['Programming Language :: Python',
-                   'Programming Language :: Python :: 2.7',
-                   'Programming Language :: Python :: 3.4',
                    'Programming Language :: Python :: 3.5',
+                   'Programming Language :: Python :: 3.6',
+                   'Programming Language :: Python :: 3.7',
                    'Development Status :: 5 - Production/Stable',
                    'Operating System :: OS Independent',
                    'Intended Audience :: Science/Research',
@@ -37,7 +32,7 @@ setup(
                    'Topic :: Scientific/Engineering :: Physics',
                    'Topic :: Software Development :: Libraries :: Python Modules'],
     packages = ['stistarg'],
-    install_requires = ['setuptools', 'numpy', 'astropy>=1.3', 'matplotlib' + matplotlib_ver],
+    install_requires = ['setuptools', 'numpy', 'astropy', 'matplotlib'],
     entry_points={
           'console_scripts': ['stistarg = stistarg.stistarg:parse']},
     )

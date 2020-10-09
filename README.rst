@@ -30,7 +30,7 @@ For more information, type ``stistarg --help``::
                           Diffuse-source algorithm. Specify checkboxsize [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.3; Written by Berry & Lockwood
+  Version 2.4; Written by Berry & Lockwood
 
 
 Python API

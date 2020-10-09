@@ -6,25 +6,14 @@ Created 27 July 2016 by Bralen Berry & Sean Lockwood
 Algorithm adapted from Solaris C "tas" code.
 '''
 
-from __future__ import division, print_function
 import os
 import sys
 import numpy as np
 from astropy.io import fits
 
 __author__  = 'Berry & Lockwood'
-__version__ = '2.3'
+__version__ = '2.4'
 __all__ = ['stistarg', 'findcheckbox', 'calculate_flux_centroid', 'display_results']
-
-# For compatibility between Python 2/3:
-if sys.version_info.major == 2:
-    WAIT = raw_input
-    INTEGER_TYPES = (int, long,)
-elif sys.version_info.major == 3:
-    WAIT = input
-    INTEGER_TYPES = (int,)
-else:
-    raise Exception('Version of Python not supported:  {}'.format(sys.version_info.major))
 
 
 def findcheckbox(inarray, checkboxsize):
@@ -131,7 +120,7 @@ def calculate_flux_centroid(inarray, x, y, checkboxsize, centroidmode='flux'):
 def validate_inputs(filename, ext, checkboxsize, source):
     if not os.access(filename, os.F_OK):
         raise IOError('Cannot access FITS file:  {:s}'.format(filename))
-    if (ext < 0) or not isinstance(ext, INTEGER_TYPES):
+    if (ext < 0) or not isinstance(ext, (int,)):
         raise IOError('FITS file extension not a valid positive integer.')
     if checkboxsize not in range(3, 101+1, 2):
         raise IOError('checkbox size is not an odd integer in 3-101:  {}'.format(checkboxsize))
@@ -197,7 +186,7 @@ def display_results(arr, flux_x, flux_y, chkx, chky, checkboxsize, geo_x=None, g
     ax.set_ylim(0, np.shape(arr)[0])
     
     fig.show()
-    tmp = WAIT('Press ENTER to exit... ')
+    tmp = input('Press ENTER to exit... ')
 
 
 def stistarg(filename, ext=0, source='point', checkboxsize=3, display=False):

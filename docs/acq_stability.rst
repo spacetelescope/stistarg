@@ -25,7 +25,7 @@ Example Usage: ``checkboxsize`` Stability
 
 .. parsed-literal::
 
-    '2.3'
+    '2.4'
 
 
 
@@ -102,7 +102,7 @@ The smaller `checkboxsize` found a small bright feature within the galaxy:
 
     --------------------------------------------------------------------------------
     STIS Target Acquisition Simulator
-    stistarg.py v2.3
+    stistarg.py v2.4
     Python v3.6.3
     Run time:  2018-07-27 12:53:29
     
@@ -133,7 +133,7 @@ The larger `checkboxsize` found the center of the galaxy:
 
     --------------------------------------------------------------------------------
     STIS Target Acquisition Simulator
-    stistarg.py v2.3
+    stistarg.py v2.4
     Python v3.6.3
     Run time:  2018-07-27 12:53:31
     

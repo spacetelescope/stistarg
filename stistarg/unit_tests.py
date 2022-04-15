@@ -5,15 +5,16 @@ import os
 import warnings
 import glob
 import tempfile
-#from nose.tools import assert_equal, assert_not_equal, assert_raises, raises
-from nose.tools import assert_almost_equals, assert_equals
-
-# To run activate astroconda, then enter:
-#   nosetests -v unit_tests.py
+import unittest
 
 
 #-----------------------------------------------------------------------------------------
 # Helper functions:
+
+assertions = unittest.TestCase('__init__')
+assert_almost_equals = assertions.assertAlmostEqual
+assert_equals = assertions.assertAlmostEqual
+
 
 def gaussarr(x, y, xsize=200, ysize=200, fwhm=10, height=300):
     '''

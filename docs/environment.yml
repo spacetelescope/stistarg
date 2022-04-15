@@ -1,8 +1,7 @@
 name: stistarg
 channels:
+  - conda-forge
   - http://ssb.stsci.edu/astroconda
 dependencies:
-  - stsci.convolve
-  - stsci.distutils
-  - stsci.tools
-  - stsci.ndimage
+  - astropy
+  - matplotlib

@@ -63,10 +63,10 @@ Contact
 For support, please contact the STScI help desk at help<at>stsci<dot>edu.
 
 
-.. |build-status| image:: https://travis-ci.org/spacetelescope/stistarg.svg?branch=master
+.. |build-status| image:: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml/badge.svg?branch=master
     :alt: build status
     :scale: 100%
-    :target: https://travis-ci.org/spacetelescope/stistarg
+    :target: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml
 
 .. |coverage| image:: https://coveralls.io/repos/github/spacetelescope/stistarg/badge.svg?branch=master
     :alt: code coverage

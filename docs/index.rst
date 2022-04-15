@@ -42,14 +42,7 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 Installation
 ------------
 
-The `stistarg` package is designed to run in the AstroConda_ environment.  After 
-installation, launch it via::
-
-  source activate astroconda
-
-.. _Astroconda: https://astroconda.readthedocs.io
-
-Then, install the `stistarg` script::
+The `stistarg` package may be installed in a conda environment::
 
   conda install -c sean-lockwood stistarg
 

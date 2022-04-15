@@ -115,7 +115,7 @@ html_theme_options = {
     'github_button'   : True, 
     'github_count'    : False, 
     'github_banner'   : True, 
-    'travis_button'   : True, 
+    'travis_button'   : False, 
     'show_powered_by' : False, 
     'analytics_id'    : 'UA-67123509-3',
     'page_width'      : 1040,}

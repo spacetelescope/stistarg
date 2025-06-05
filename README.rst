@@ -67,15 +67,12 @@ For support, please contact the `STScI help desk`_.
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/stistarg
    :alt: PyPI - Version
-   :scale: 100%
    :target: https://pypi.org/project/stistarg/
 
 .. |docs| image:: https://readthedocs.org/projects/stistarg/badge/
     :alt: Documentation Status
-    :scale: 100%
     :target: http://stistarg.readthedocs.io/en/latest/?badge=latest
 
 .. |build-status| image:: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml/badge.svg?branch=master
     :alt: build status
-    :scale: 100%
     :target: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml

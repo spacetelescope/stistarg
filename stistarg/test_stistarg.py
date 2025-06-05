@@ -1,5 +1,4 @@
 import stistarg
-from stistarg.stistarg import parse
 
 import numpy as np
 from astropy.io import fits
@@ -193,7 +192,7 @@ def test_parse_point(monkeypatch):
     monkeypatch.setattr(sys, "argv", test_args)
 
     with patch("stistarg.stistarg.stistarg") as mock_stistarg:
-        parse()
+        stistarg.parse()
         mock_stistarg.assert_called_once_with("test.fits", 0, "point", 3, False)
 
 
@@ -202,5 +201,5 @@ def test_parse_diffuse(monkeypatch):
     monkeypatch.setattr(sys, "argv", test_args)
 
     with patch("stistarg.stistarg.stistarg") as mock_stistarg:
-        parse()
+        stistarg.parse()
         mock_stistarg.assert_called_once_with("test.fits", 0, "diffuse", 7, False)

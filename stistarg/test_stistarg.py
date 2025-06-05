@@ -191,7 +191,7 @@ def test_parse_point(monkeypatch):
     test_args = ["stistarg", "test.fits"]
     monkeypatch.setattr(sys, "argv", test_args)
 
-    with patch("stistarg.stistarg.stistarg") as mock_stistarg:
+    with patch("stistarg.main.stistarg") as mock_stistarg:
         stistarg.parse()
         mock_stistarg.assert_called_once_with("test.fits", 0, "point", 3, False)
 
@@ -200,6 +200,6 @@ def test_parse_diffuse(monkeypatch):
     test_args = ["stistarg", "test.fits", "--diffuse", "7"]
     monkeypatch.setattr(sys, "argv", test_args)
 
-    with patch("stistarg.stistarg.stistarg") as mock_stistarg:
+    with patch("stistarg.main.stistarg") as mock_stistarg:
         stistarg.parse()
         mock_stistarg.assert_called_once_with("test.fits", 0, "diffuse", 7, False)

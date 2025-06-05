@@ -60,7 +60,7 @@ Documentation = "https://stistarg.readthedocs.io"
 Support = "https://hsthelp.stsci.edu"
 
 [project.scripts]
-stistarg = "stistarg.stistarg:parse"
+stistarg = "stistarg.main:parse"
 
 [tool.setuptools]
 packages = ["stistarg"]

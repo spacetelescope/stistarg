@@ -50,7 +50,7 @@ capability to use non--STIS data will be added in a future release.  Users wishi
 use data from other sources must trim and rescale their input data accordingly.  The 
 STIS CCD plate scale is `0.05078 arcsec/pix`_.
 
-.. _`0.05078 arcsec/pix`: https://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
+.. _`0.050725 arcsec/pix`: https://hst-docs.stsci.edu/stisihb/chapter-14-imaging-reference-material/14-6-image-mode-geometric-distortion
 
 Furthermore, `stistarg` assumes the use of STIS acquisition image data and trims out the 
 last five columns from the input array before performing calculations (these are normally 
@@ -71,7 +71,7 @@ For support, please contact the `STScI help desk`_.
 
 .. |docs| image:: https://readthedocs.org/projects/stistarg/badge/
     :alt: Documentation Status
-    :target: http://stistarg.readthedocs.io/en/latest/?badge=latest
+    :target: https://stistarg.readthedocs.io/en/latest/?badge=latest
 
 .. |build-status| image:: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml/badge.svg?branch=master
     :alt: build status

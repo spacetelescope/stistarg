@@ -6,7 +6,7 @@ See documentation at http://stistarg.readthedocs.io/en/latest/
 Utility to simulate HST/STIS target acquisitions with various "optional parameters" 
 available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 
-|build-status| |coverage| |docs| |conda|
+|PyPI| |docs| |build-status|
 
 
 Command Line Interface
@@ -30,7 +30,7 @@ For more information, type ``stistarg --help``::
                           Diffuse-source algorithm. Specify checkboxsize [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.4; Written by Berry & Lockwood
+  Written by Berry & Lockwood
 
 
 Python API
@@ -63,21 +63,17 @@ Contact
 For support, please contact the STScI help desk at help<at>stsci<dot>edu.
 
 
-.. |build-status| image:: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml/badge.svg?branch=master
-    :alt: build status
-    :scale: 100%
-    :target: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml
-
-.. |coverage| image:: https://coveralls.io/repos/github/spacetelescope/stistarg/badge.svg?branch=master
-    :alt: code coverage
-    :scale: 100%
-    :target: https://coveralls.io/github/spacetelescope/stistarg?branch=master
+.. |PyPI| image:: https://img.shields.io/pypi/v/stistarg
+   :alt: PyPI - Version
+   :scale: 100%
+   :target: https://pypi.org/project/stistarg/
 
 .. |docs| image:: https://readthedocs.org/projects/stistarg/badge/
     :alt: Documentation Status
     :scale: 100%
     :target: http://stistarg.readthedocs.io/en/latest/?badge=latest
 
-.. |conda| image:: https://anaconda.org/sean-lockwood/stistarg/badges/installer/conda.svg
-    :alt: conda install
-    :target: https://anaconda.org/sean-lockwood/stistarg
+.. |build-status| image:: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml/badge.svg?branch=master
+    :alt: build status
+    :scale: 100%
+    :target: https://github.com/spacetelescope/stistarg/actions/workflows/ci.yml

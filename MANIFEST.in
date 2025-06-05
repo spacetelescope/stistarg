@@ -1,6 +1,0 @@
-include README.rst
-include LICENSE.txt
-include setup.py
-include stistarg/*.py
-exclude deprecated_c_code/*
-global-exclude *.pyc

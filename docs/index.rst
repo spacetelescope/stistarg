@@ -23,7 +23,7 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
   bash$  stistarg --ext 1 --diffuse 7 --display o6fm02q7q_raw.fits
   --------------------------------------------------------------------------------
   STIS Target Acquisition Simulator
-  stistarg.pyc v2.4
+  stistarg.pyc v2.4.1
   Python v3.7.4
   Run time:  2017-01-20 11:39:04
   
@@ -42,9 +42,9 @@ available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
 Installation
 ------------
 
-The `stistarg` package may be installed in a conda environment::
+The `stistarg` package has been updated to install via pip::
 
-  conda install -c sean-lockwood stistarg
+  pip install stistarg
 
 ------------------------------------------------------------------------------------------
 
@@ -52,10 +52,11 @@ Alternatively, you may download_ and manually install `stistarg` via::
 
   python setup.py install
 
-.. _download: https://anaconda.org/sean-lockwood/stistarg/files
+.. _download: https://github.com/spacetelescope/stistarg/archive/master.zip
 
-Note that this package requires `astropy`_ and `matplotlib`_.
+Note that this package requires `numpy`_, `astropy`_, and `matplotlib`_.
 
+.. _`numpy`: https://numpy.org
 .. _`astropy`: https://www.astropy.org
 .. _`matplotlib`: https://matplotlib.org
 
@@ -83,7 +84,7 @@ For more information, type ``stistarg --help``
                           [odd integer 3-101]
     --display, -d         Display results with matplotlib.pyplot
   
-  Version 2.4; Written by Berry & Lockwood
+  Written by Berry & Lockwood
 
 
 Python API

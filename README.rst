@@ -1,7 +1,7 @@
 HST/STIS Target Acquisition Simulator
 =====================================
 
-See documentation at http://stistarg.readthedocs.io/en/latest/
+See documentation at https://stistarg.readthedocs.io/en/latest/
 
 Utility to simulate HST/STIS target acquisitions with various "optional parameters" 
 available in the Astronomer's Proposal Tool (APT) on a user-supplied FITS image.
@@ -50,7 +50,7 @@ capability to use non--STIS data will be added in a future release.  Users wishi
 use data from other sources must trim and rescale their input data accordingly.  The 
 STIS CCD plate scale is `0.05078 arcsec/pix`_.
 
-.. _`0.05078 arcsec/pix`: http://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
+.. _`0.05078 arcsec/pix`: https://www.stsci.edu/hst/stis/documents/handbooks/currentIHB/c13_specref03.html#922126
 
 Furthermore, `stistarg` assumes the use of STIS acquisition image data and trims out the 
 last five columns from the input array before performing calculations (these are normally 

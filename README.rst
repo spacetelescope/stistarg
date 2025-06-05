@@ -60,7 +60,9 @@ hot).  To skip this behavior, users should pad their data accordingly.
 Contact
 -------
 
-For support, please contact the STScI help desk at help<at>stsci<dot>edu.
+For support, please contact the `STScI help desk`_.
+
+.. _`STScI help desk`: https://hsthelp.stsci.edu
 
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/stistarg

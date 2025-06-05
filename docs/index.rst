@@ -50,7 +50,7 @@ The `stistarg` package has been updated to install via pip::
 
 Alternatively, you may download_ and manually install `stistarg` via::
 
-  python setup.py install
+  pip install .
 
 .. _download: https://github.com/spacetelescope/stistarg/archive/master.zip
 

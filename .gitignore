@@ -1,5 +1,4 @@
 build/
-doc/_build/
 *.pyc
 *%
 *~
@@ -9,5 +8,5 @@ targacq.a
 dist/
 docs/_build/
 stistarg.egg-info/
-stistarg/version.py
+stistarg/_version.py
 .pytest_cache/

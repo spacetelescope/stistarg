@@ -1,8 +1,0 @@
-name: stistarg
-channels:
-  - conda-forge
-  - http://ssb.stsci.edu/astroconda
-dependencies:
-  - astropy
-  - matplotlib
-  - pytest
